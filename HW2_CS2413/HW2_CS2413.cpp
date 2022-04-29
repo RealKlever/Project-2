@@ -268,28 +268,68 @@ void setOfURLs::setSize(int i)
 // print the set of URLs in dictionary format (i.e., in alphabetical order)
 void setOfURLs::display()
 {
+	this->sortURLs();
 
-	// TODO
-
+	for (int i = 0; i < _URLs->Size(); i++)
+	{
+		cout << _URLs[i] << endl;
+	}
 }
 
 // sort the _URLs and _frequencies arrays, based on the frequencies
 void setOfURLs::sortFreq()
 {
-	// TODO
+	for (int i = 0; i < _size; i++)
+	{
+		for (int j = i + 1; j < _size; j++)
+		{
+			if (_frequencies[i] > _frequencies[j])
+			{
+				myString temp = _URLs[i];
+				_URLs[i] = _URLs[j];
+				_URLs[j] = temp;
+
+				int temp2 = _frequencies[i];
+				_frequencies[i] = _frequencies[j];
+				_frequencies[j] = temp2;
+			}
+		}
+	}
 }
 
 // sort the _URLs and _frequencies arrays, alphabetically
 void setOfURLs::sortURLs()
 {
-	// TODO
+	for (int i = 0; i < _URLs->Size(); i++)
+	{
+		for (int j = i + 1; j < _URLs->Size(); j++)
+		{
+			if (_URLs[i].operator>(_URLs[j]))
+			{
+				myString temp = _URLs[i];
+				_URLs[i] = _URLs[j];
+				_URLs[j] = temp;
+
+				int temp2 = _frequencies[i];
+				_frequencies[i] = _frequencies[j];
+				_frequencies[j] = temp2;
+			}
+		}
+	}
 }
 
 // remove from the setOfURLs object, the URLs that have to be filtered out 
 setOfURLs* setOfURLs::removeURLs(myString* URLsToFilterOut, int numURLsToFilterOut)
 {
+	int removed = 0;
 
-	// TODO
+	for (int i = 0; i < _URLs->Size(); i++)
+	{
+		if (URLsToFilterOut->operator==(_URLs[i]))
+		{
+			_URLs[i]; // THIS IS WHERE YOU LAST LEFT OFF
+		}
+	}
 
 	return NULL;
 }
